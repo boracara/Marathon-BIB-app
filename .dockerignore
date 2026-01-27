@@ -1,0 +1,40 @@
+# Ignore everything that is not needed
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+*.csv
+# Virtual envs (VERY IMPORTANT)
+venv*/
+venv*/
+env/
+.venv/
+
+# Datasets / training artifacts (VERY IMPORTANT)
+parseq_data/
+parseq_recognizer/parseq/outputs/
+runs/
+datasets/
+data/
+
+# Large model / binary artifacts (optional; allowlist what you need)
+*.pt
+*.onnx
+*.engine
+*.tflite
+*.dll
+*.lib
+*.pyd
+*.mdb
+
+# Git / IDE
+.git/
+.vscode/
+.idea/
+*.log
+Thumbs.db
+
+# If you need ONE model file, allowlist it (example)
+#!models/best.pt
+*.pt
+!models/best.pt

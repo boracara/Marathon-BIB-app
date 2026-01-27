@@ -1,0 +1,31 @@
+﻿services:
+  db:
+    image: postgres:16
+    container_name: marathon_db
+    environment:
+      POSTGRES_USER: marathon
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: marathon_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:latest
+    container_name: marathon_minio
+    ports:
+      - "9000:9000"   # S3 API
+      - "9001:9001"   # Web console
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  minio_data:

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Berat Marathon 2026 • Photo Delivery</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <div class="brand">
+        <div class="brand__badge">BM</div>
+        <div class="brand__text">
+          <div class="brand__title">Berat Marathon 2026</div>
+          <div class="brand__subtitle">Photo Delivery</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <form class="search search--center" method="POST" action="/request_code" autocomplete="off">
+        <div class="search__left search__left--center">
+          <label class="label label--center" for="email">Get your photos by email</label>
+          <label class="label label--sub" for="email">Enter the email you registered with</label>
+
+          <div class="inputWrap inputWrap--center">
+            <input
+              id="email"
+              name="email"
+              class="input input--center"
+              type="email"
+              value=""
+              required
+              placeholder="name@example.com"
+              style="letter-spacing: 0px;"
+            />
+            <div class="hint hint--center">We will send a verification code to this email.</div>
+          </div>
+
+          {% if error %}
+            <div style="margin-top: 12px; color: #d75a5a; font-weight: 600; text-align:center;">
+              {{ error }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="search__right search__right--center">
+          <button class="btn" type="submit">Send verification code</button>
+        </div>
+
+        {% if not smtp_ok %}
+          <div style="margin-top: 12px; color: #d75a5a; font-weight: 600; text-align:center;">
+            Email sending is not configured on the server (SMTP).
+          </div>
+        {% endif %}
+      </form>
+    </section>
+  </main>
+</body>
+</html>

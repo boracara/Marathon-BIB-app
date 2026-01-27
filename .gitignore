@@ -1,0 +1,69 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+parseq_data/
+parseq_recognizer/parseq/
+*.mdb
+# =========================
+# Virtual Environments
+# =========================
+venv/
+env/
+.venv/
+venv_parseq311/
+venv_face/
+ENV/
+
+# =========================
+# Jupyter / Experiments
+# =========================
+.ipynb_checkpoints/
+*.ipynb
+
+# =========================
+# ML Models / Weights
+# =========================
+*.pt
+*.pth
+*.onnx
+*.ckpt
+*.h5
+*.weights
+
+# =========================
+# Datasets & Generated Files
+# =========================
+data/
+datasets/
+crops/
+crops_digits/
+runs/
+static/images/
+*.csv
+*.zip
+
+# =========================
+# Logs & Outputs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / IDE
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Secrets
+# =========================
+.env
+.env.*
