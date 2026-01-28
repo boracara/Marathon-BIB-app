@@ -1,21 +1,19 @@
-FROM python:3.11-slim
+FROM python:3.10-slim
+
+# Install system libraries needed for OpenCV and Postgres
+# Swapped libgl1-mesa-glx for libgl1
+RUN apt-get update && apt-get install -y \
+    libgl1 \
+    libglib2.0-0 \
+    libpq-dev \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Needed for opencv/easyocr runtime on Debian slim
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libglib2.0-0 libsm6 libxext6 libxrender1 \
-  && rm -rf /var/lib/apt/lists/*
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY requirements.docker.txt /app/requirements.docker.txt
+COPY . .
 
-# Force CPU-only PyTorch (prevents downloading nvidia_* CUDA wheels)
-RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch torchvision
-
-# Install the rest of your dependencies
-RUN pip install --no-cache-dir -r requirements.docker.txt
-
-COPY . /app
-
-EXPOSE 5000
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
