@@ -5,7 +5,7 @@ import psycopg2
 from storage import get_s3, S3_BUCKET
 
 DB_CONFIG = {
-    "host": "127.0.0.1",
+    "host": "db",  # the name that its on docker
     "port": 5433,              # IMPORTANT: your host port
     "dbname": "marathon_db",
     "user": "marathon",
@@ -58,4 +58,4 @@ def ingest_photos(event_id: int, folder: str):
 
 if __name__ == "__main__":
     # CHANGE THIS:
-    ingest_photos(event_id=1, folder=r"data\originals")
+    ingest_photos(event_id=1, folder=r"data\originals")   # folderi me foto
