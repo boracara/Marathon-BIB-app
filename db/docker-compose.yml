@@ -52,9 +52,9 @@ services:
       # SMTP Settings (Fill these in with your email provider info)
       - SMTP_HOST=smtp.gmail.com
       - SMTP_PORT=587
-      - SMTP_USER=boracara13@gmail.com
-      - SMTP_PASS=wadd qrdx thhi zofd
-      - SMTP_FROM=boracara13@gmail.com
+      - SMTP_USER=PASTE_YOUR_EMAIL_HERE
+      - SMTP_PASS=PASTE_YOUR_PASSWORD_HERE
+      - SMTP_FROM=PASTE_YOUR_EMAIL_HERE
     restart: always
 
 volumes:
